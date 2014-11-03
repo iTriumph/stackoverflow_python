@@ -193,7 +193,7 @@ $100
 $100
 >>> print([corner_street_atm.next() for cash in range(5)])
 ['$100', '$100', '$100', '$100', '$100']
->>> hsbc.crisis = True # crisis is coming, no more money!
+>>> hsbc.crisis = True # cao,经济危机来了没有钱了!
 >>> print(corner_street_atm.next())
 <type 'exceptions.StopIteration'>
 >>> wall_street_atm = hsbc.create_atm() # 对于其他ATM,它还是True
