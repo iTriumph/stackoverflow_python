@@ -154,4 +154,113 @@ return result
 
 这段代码有几个有意思的地方:
 
-* 在循环迭代一个列表的同时在列表中添加元素:-)尽管在有限循环里结束多少有一些危险,但也不失为一个简单的方法去遍历嵌套的数据.在这里```candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))```将遍历生成器的每一个值,但是```while```
+* 一般的时候我们会在循环迭代一个列表的同时在列表中添加元素:-)尽管在有限循环里结束多少有一些危险,但也不失为一个简单的方法去遍历嵌套的数据.在这里```candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))```将遍历生成器的每一个值,但是```while```循环中的condidates将不再保存已经遍历过的生成器对象，也就是说添加进condidates的生成器对象只会遍历一遍。
+
+* ```extend()```是一个列表对象的方法,它可以把一个迭代对象添加进列表.
+
+我们经常这么用:
+
+```python
+>>> a = [1, 2]
+>>> b = [3, 4]
+>>> a.extend(b)
+>>> print(a)
+[1, 2, 3, 4]
+```
+
+但是在你给的代码里得到的是生成器,这样做的好处:
+
+1. 你不需要读这个值两次
+2. 你能得到许多孩子节点但是你不希望他们全部存入内存.
+
+这种方法之所以能很好的运行是因为Python不关心方法的参数是不是一个列表.它只希望接受一个迭代器,所以不管是strings,lists,tuples或者generators都可以!这种方法叫做duck typing,这也是Python看起来特别cool的原因之一.但是这又是另外一个传说了,另一个问题~~
+
+好了,看到这里可以打住了,下面让我们看看生成器的高级用法:
+
+#### 控制迭代器的穷尽
+
+```python
+>>> class Bank(): # let's create a bank, building ATMs
+...    crisis = False
+...    def create_atm(self):
+...        while not self.crisis:
+...            yield "$100"
+>>> hsbc = Bank() # when everything's ok the ATM gives you as much as you want
+>>> corner_street_atm = hsbc.create_atm()
+>>> print(corner_street_atm.next())
+$100
+>>> print(corner_street_atm.next())
+$100
+>>> print([corner_street_atm.next() for cash in range(5)])
+['$100', '$100', '$100', '$100', '$100']
+>>> hsbc.crisis = True # crisis is coming, no more money!
+>>> print(corner_street_atm.next())
+<type 'exceptions.StopIteration'>
+>>> wall_street_atm = hsbc.create_atm() # it's even true for new ATMs
+>>> print(wall_street_atm.next())
+<type 'exceptions.StopIteration'>
+>>> hsbc.crisis = False # trouble is, even post-crisis the ATM remains empty
+>>> print(corner_street_atm.next())
+<type 'exceptions.StopIteration'>
+>>> brand_new_atm = hsbc.create_atm() # build a new one to get back in business
+>>> for cash in brand_new_atm:
+...    print cash
+$100
+$100
+$100
+$100
+$100
+$100
+$100
+$100
+$100
+...
+```
+
+它对于一些不断变化的值很有用,像控制你资源的访问.
+
+#### Itertools,你最好的朋友
+
+itertools模块包含了一些特殊的函数可以操作可迭代对象.有没有想过复制一个生成器?链接两个生成器?把嵌套列表里的值组织成一个列表?Map/Zip还不用创建另一个列表?
+
+来吧```import itertools```
+
+来一个例子?让我们看看4匹马比赛有多少个排名结果:
+
+```python
+>>> horses = [1, 2, 3, 4]
+>>> races = itertools.permutations(horses)
+>>> print(races)
+<itertools.permutations object at 0xb754f1dc>
+>>> print(list(itertools.permutations(horses)))
+[(1, 2, 3, 4),
+ (1, 2, 4, 3),
+ (1, 3, 2, 4),
+ (1, 3, 4, 2),
+ (1, 4, 2, 3),
+ (1, 4, 3, 2),
+ (2, 1, 3, 4),
+ (2, 1, 4, 3),
+ (2, 3, 1, 4),
+ (2, 3, 4, 1),
+ (2, 4, 1, 3),
+ (2, 4, 3, 1),
+ (3, 1, 2, 4),
+ (3, 1, 4, 2),
+ (3, 2, 1, 4),
+ (3, 2, 4, 1),
+ (3, 4, 1, 2),
+ (3, 4, 2, 1),
+ (4, 1, 2, 3),
+ (4, 1, 3, 2),
+ (4, 2, 1, 3),
+ (4, 2, 3, 1),
+ (4, 3, 1, 2),
+ (4, 3, 2, 1)]
+```
+
+#### 理解迭代的内部机制
+
+迭代是可迭代对象(对应```__iter__()```方法)和迭代器(对应```__next__()```方法)的一个过程.可迭代对象就是任何你可以迭代的对象(废话啊).迭代器就是可以让你迭代可迭代对象的对象(有点绕口,意思就是这个意思)
+
+预知后事如何,请看[for 循环是如何工作的](http://effbot.org/zone/python-for-statement.htm)
