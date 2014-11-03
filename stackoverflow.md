@@ -180,12 +180,12 @@ return result
 #### 控制迭代器的穷尽
 
 ```python
->>> class Bank(): # let's create a bank, building ATMs
+>>> class Bank(): # 让我们建个银行,生产许多ATM
 ...    crisis = False
 ...    def create_atm(self):
 ...        while not self.crisis:
 ...            yield "$100"
->>> hsbc = Bank() # when everything's ok the ATM gives you as much as you want
+>>> hsbc = Bank() # 当一切就绪了你想要多少ATM就给你多少
 >>> corner_street_atm = hsbc.create_atm()
 >>> print(corner_street_atm.next())
 $100
@@ -196,13 +196,13 @@ $100
 >>> hsbc.crisis = True # crisis is coming, no more money!
 >>> print(corner_street_atm.next())
 <type 'exceptions.StopIteration'>
->>> wall_street_atm = hsbc.create_atm() # it's even true for new ATMs
+>>> wall_street_atm = hsbc.create_atm() # 对于其他ATM,它还是True
 >>> print(wall_street_atm.next())
 <type 'exceptions.StopIteration'>
->>> hsbc.crisis = False # trouble is, even post-crisis the ATM remains empty
+>>> hsbc.crisis = False # 麻烦的是,尽管危机过去了,ATM还是空的
 >>> print(corner_street_atm.next())
 <type 'exceptions.StopIteration'>
->>> brand_new_atm = hsbc.create_atm() # build a new one to get back in business
+>>> brand_new_atm = hsbc.create_atm() # 只能重新新建一个bank了
 >>> for cash in brand_new_atm:
 ...    print cash
 $100
@@ -219,7 +219,7 @@ $100
 
 它对于一些不断变化的值很有用,像控制你资源的访问.
 
-#### Itertools,你最好的朋友
+#### Itertools,你的好基友
 
 itertools模块包含了一些特殊的函数可以操作可迭代对象.有没有想过复制一个生成器?链接两个生成器?把嵌套列表里的值组织成一个列表?Map/Zip还不用创建另一个列表?
 
