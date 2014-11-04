@@ -9,7 +9,7 @@ def node._get_child_candidates(self, distance, min_dist, max_dist):
     if self._leftchild and distance - max_dist < self._median:
         yield self._leftchild
     if self._rightchild and distance + max_dist >= self._median:
-        yield self._rightchild 
+        yield self._rightchild
 ```
 
 下面是调用它:
@@ -96,7 +96,7 @@ Mylist是可迭代的.当你用列表推导式的时候,你就创建了一个列
 4
 ```
 
-在这里这个例子好像没什么用,不过当你的函数要返回一个非常大的集合兵器你希望只读一次的话,那么它就非常的方便了.
+在这里这个例子好像没什么用,不过当你的函数要返回一个非常大的集合并且你希望只读一次的话,那么它就非常的方便了.
 
 要理解```Yield```你必须先理解当你调用函数的时候,函数里的代码并没有运行.函数仅仅返回生成器对象,这就是它最微妙的地方:-)
 
