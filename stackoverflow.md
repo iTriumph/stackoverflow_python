@@ -1,10 +1,7 @@
----
-rank: 1
-▲: 2888
-✰: 2315
-vote: 4033
-url: http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python
----
+
+| rank | ▲ | ✰ | vote | url |
+|:-:|:-:|:-:|:-:|:-:|
+|   1  |  288 | 2315 | 4033 | [url](http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python) |
 
 ## Python中关键字yield有什么作用?
 
@@ -269,13 +266,9 @@ itertools模块包含了一些特殊的函数可以操作可迭代对象.有没�
 
 预知后事如何,请看[for 循环是如何工作的](http://effbot.org/zone/python-for-statement.htm)
 
----
-rank: 2
-▲: 1919
-✰: 1842
-vote: 3137
-url: http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python
----
+| rank | ▲ | ✰ | vote | url |
+|:-:|:-:|:-:|:-:|:-:|
+| 2 | 1919 | 1842 | 3137 | [url](http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python) |
 
 
 ## Python中的元类(metaclass)是什么?
