@@ -1,6 +1,6 @@
 | rank | ▲ | ✰ | vote | url |
 |:-:|:-:|:-:|:-:|:-:|
-|   5  |  1187 | 203 | 1370 | [url](http://stackoverflow.com/questions/82831/check-if-a-file-exists-using-python) |
+|   5  |  1187 | 203 | 1370 | [url](http://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator) |
 
 ## Question:在Python中有三元运算符吗?
 
