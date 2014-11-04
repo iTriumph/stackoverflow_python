@@ -521,3 +521,4 @@ Python中的一切都是对象，它们要么是类的实例，要么是元类�
 * [monkey patching](http://en.wikipedia.org/wiki/Monkey_patch)
 * 装饰器
 
+当你需要动态修改类时，99%的时间里你最好使用上面这两种技术。当然了，其实在99%的时间里你根本就不需要动态修改类 :D
