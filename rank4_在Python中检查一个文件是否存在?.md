@@ -1,18 +1,17 @@
 | rank | ▲ | ✰ | vote | url |
 |:-:|:-:|:-:|:-:|:-:|
-|   4  |  1262 | 284 | 923 | [url](http://stackoverflow.com/questions/82831/check-if-a-file-exists-using-python) |
+|   5  |  1187 | 203 | 1370 | [url](http://stackoverflow.com/questions/82831/check-if-a-file-exists-using-python) |
 
-## Question:在Python中检查一个文件是否存在?
+## Question:在Python中有三元运算符吗?
 
-在不用`try:`语句的情况下怎么检查一个文件是否存在?
+如果没有,可以像其他语言用的简单方法来实现吗?
 
 ## Answer:
 
-可以这么用:
+有,在2.5版本中加入.对于python初学者可能有点难以理解,所以要记住了.
+
+语法如下:
 
 ```python
-import os.path
-os.path.isfile(fname)
+a if test else b
 ```
-
-检查你的文件是否存在
