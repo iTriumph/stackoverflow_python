@@ -2,11 +2,15 @@
 |:-:|:-:|:-:|:-:|:-:|
 | 2 | 1919 | 1842 | 3137 | [url](http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python) |
 
-## Question:Python中的元类(metaclass)是什么?
+***
+
+## Python中的元类(metaclass)是什么?
 
 元类是什么?如何使用元类?
 
-## Answer:
+
+
+***
 
 #### 类对象
 
@@ -17,7 +21,7 @@
 ```python
 >>> class ObjectCreator(object):
 ...       pass
-... 
+...
 
 >>> my_object = ObjectCreator()
 >>> print(my_object)
@@ -33,7 +37,7 @@
 ```python
 >>> class ObjectCreator(object):
 ...       pass
-... 
+...
 ```
 
 上面代码在内存里创建了名叫"ObjectCreator"的对象.
@@ -54,7 +58,7 @@ e.g.:
 <class '__main__.ObjectCreator'>
 >>> def echo(o):
 ...       print(o)
-... 
+...
 >>> echo(ObjectCreator) # 你可以把类作为参数传递
 <class '__main__.ObjectCreator'>
 >>> print(hasattr(ObjectCreator, 'new_attribute'))
@@ -87,8 +91,8 @@ foo
 ...         class Bar(object):
 ...             pass
 ...         return Bar
-...     
->>> MyClass = choose_class('foo') 
+...
+>>> MyClass = choose_class('foo')
 >>> print(MyClass) # 返回一个类不是一个实例
 <class '__main__.Foo'>
 >>> print(MyClass()) # 你可以在类里创建一个对象
@@ -121,8 +125,8 @@ foo
 ```type```这样工作:
 
 ```python
-type(类名, 
-     父类名的元组 (针对继承情况,可以为空), 
+type(类名,
+     父类名的元组 (针对继承情况,可以为空),
      包含属性的字典(名称和值))
 ```
 
@@ -194,7 +198,7 @@ True
 ```python
 >>> def echo_bar(self):
 ...       print(self.bar)
-... 
+...
 >>> FooChild = type('FooChild', (Foo,), {'echo_bar': echo_bar})
 >>> hasattr(Foo, 'echo_bar')
 False
@@ -369,7 +373,7 @@ print(f.BAR)
 ```python
 # 请记住，'type'实际上是一个类，就像'str'和'int'一样
 # 所以，你可以从type继承
-class UpperAttrMetaclass(type): 
+class UpperAttrMetaclass(type):
     # __new__ 是在__init__之前被调用的特殊方法
     # __new__是用来创建对象并返回它的方法
     # 而__init__只是用来将传入的参数初始化给对象
@@ -377,7 +381,7 @@ class UpperAttrMetaclass(type):
     # 这里，创建的对象是类，我们希望能够自定义它，所以我们这里改写__new__
     # 如果你希望的话，你也可以在__init__中做些事情
     # 还有一些高级的用法会涉及到改写__call__特殊方法，但是我们这里不用
-    def __new__(upperattr_metaclass, future_class_name, 
+    def __new__(upperattr_metaclass, future_class_name,
                 future_class_parents, future_class_attr):
 
         uppercase_attr = {}
@@ -393,9 +397,9 @@ class UpperAttrMetaclass(type):
 但是这不是真正的面向对象(OOP).我们直接调用了type，而且我们没有改写父类的__new__方法。现在让我们这样去处理:
 
 ```python
-class UpperAttrMetaclass(type): 
+class UpperAttrMetaclass(type):
 
-    def __new__(upperattr_metaclass, future_class_name, 
+    def __new__(upperattr_metaclass, future_class_name,
                 future_class_parents, future_class_attr):
 
         uppercase_attr = {}
@@ -407,7 +411,7 @@ class UpperAttrMetaclass(type):
 
         # 重用 type.__new__ 方法
         # 这就是基本的OOP编程，没什么魔法
-        return type.__new__(upperattr_metaclass, future_class_name, 
+        return type.__new__(upperattr_metaclass, future_class_name,
                             future_class_parents, uppercase_attr)
 ```
 
@@ -416,7 +420,7 @@ class UpperAttrMetaclass(type):
 当然了，为了清晰起见，这里的名字我起的比较长。但是就像```self```一样，所有的参数都有它们的传统名称。因此，在真实的产品代码中一个元类应该是像这样的：
 
 ```python
-class UpperAttrMetaclass(type): 
+class UpperAttrMetaclass(type):
 
     def __new__(cls, clsname, bases, dct):
 
@@ -433,7 +437,7 @@ class UpperAttrMetaclass(type):
 如果使用super方法的话，我们还可以使它变得更清晰一些，这会缓解继承（是的，你可以拥有元类，从元类继承，从type继承）
 
 ```python
-class UpperAttrMetaclass(type): 
+class UpperAttrMetaclass(type):
 
     def __new__(cls, clsname, bases, dct):
 

@@ -2,11 +2,13 @@
 |:-:|:-:|:-:|:-:|:-:|
 |   6  |  1161 | 520 | 1167 | [url](http://stackoverflow.com/questions/89228/calling-an-external-command-in-python) |
 
-## Question:在Python中调用外部命令?
+***
+
+## 在Python中调用外部命令?
 
 怎么在Python脚本里调用外部命令?(就好像直接输入在Unix shell中或者windows的命令行里)
 
-## Answer:
+***
 
 来来来,我给你叨咕叨咕各种方法和各自优缺点:
 
@@ -31,7 +33,7 @@
 	```python
 	return_code = subprocess.call("echo Hello World", shell=True)
 	```
-    
+
 5. os模块里也有C语言里`fork/exec/spawn`方法,但是我不建议你直接用它们.
 
 

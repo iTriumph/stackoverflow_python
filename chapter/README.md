@@ -2,8 +2,10 @@
 |:-:|:-:|:-:|:-:|:-:|
 |   1  |  2888 | 2315 | 4033 | [url](http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python) |
 
+***
 
-## Question:Python中关键字yield有什么作用?
+
+## Python中关键字yield有什么作用?
 
 yield有什么用?
 
@@ -32,7 +34,7 @@ return result
 
 当```_get_child_candidates```方法被调用的时候发生了什么?是返回一个列表?还是一个元祖?它还能第二次调用吗?后面的调用什么时候结束?
 
-## Answer:
+***
 
 为了理解yield有什么用,首先得理解generators,而理解generators前还要理解iterables
 
@@ -265,3 +267,4 @@ itertools模块包含了一些特殊的函数可以操作可迭代对象.有没�
 迭代是可迭代对象(对应```__iter__()```方法)和迭代器(对应```__next__()```方法)的一个过程.可迭代对象就是任何你可以迭代的对象(废话啊).迭代器就是可以让你迭代可迭代对象的对象(有点绕口,意思就是这个意思)
 
 预知后事如何,请看[for 循环是如何工作的](http://effbot.org/zone/python-for-statement.htm)
+
