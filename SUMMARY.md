@@ -7,4 +7,5 @@
 * [用Python如何检测一个文件是否存在?](12/README.md)
 * [在Python中有三元运算符吗?](1231/README.md)
 * [在Python中调用外部命令?](qwe/README.md)
+* [在Python里如何用枚举类型?](python/README.md)
 
