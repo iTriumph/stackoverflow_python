@@ -8,4 +8,5 @@
 * [在Python中有三元运算符吗?](1231/README.md)
 * [在Python中调用外部命令?](qwe/README.md)
 * [在Python里如何用枚举类型?](python/README.md)
+* [怎么在windows下安装pip?](windowspip/README.md)
 
