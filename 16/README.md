@@ -4,7 +4,7 @@
 
 ***
 
-## 怎么用引用来传递一个变量?
+## 怎么用引用来改变一个变量?
 
 Python的文档对参数传递的是值还是引用没有明确说明,下面的代码没有改变值`Original`
 
@@ -19,7 +19,7 @@ class PassByReference:
         var = 'Changed'
 ```
 
-有什么方法能让我同过引用来传递变量吗?
+有什么方法能让通过引用来改变变量吗?
 
 ***
 
@@ -87,4 +87,67 @@ set to ['and', 'we', 'can', 'not', 'lie']
 after, outer_list = ['we', 'like', 'proper', 'English']
 ```
 
+既然`the_list`参数是通过值进行传递的,那么为它赋值将会对方法以外没有影响.`the_list`是`outer_list`引用(注意,名词)的一个拷贝,我们将`the_list`指向一个新的列表,但是并没有改变`outer_list`的指向.
 
+### 字符串-不可变类型
+
+**它是不可变类型,所以我们不能改变字符串里的内容.**
+
+现在,让我们试着改变引用
+
+```python
+def try_to_change_string_reference(the_string):
+    print 'got', the_string
+    the_string = 'In a kingdom by the sea'
+    print 'set to', the_string
+
+outer_string = 'It was many and many a year ago'
+
+print 'before, outer_string =', outer_string
+try_to_change_string_reference(outer_string)
+print 'after, outer_string =', outer_string
+```
+
+输出:
+
+```python
+before, outer_string = It was many and many a year ago
+got It was many and many a year ago
+set to In a kingdom by the sea
+after, outer_string = It was many and many a year ago
+```
+
+又一次,既然`the_string`参数用值进行传递,对它进行赋值并不能改变方法外的值.`the_string`只是`outer_string`引用(名词)的副本,所以我们让`the_string`指向一个新字符串,依然无法改变`outer_string`的指向.
+
+希望你清楚以上那些.
+
+修改:到现在位置还没有回答"有什么方法同过引用传递变量?",让我们往下看.
+
+### 我们该怎么办?
+
+你可以返回一个新值.这不会改变传过来的值,但是能得到你想要的结果.
+
+```python
+def return_a_whole_new_string(the_string):
+    new_string = something_to_do_with_the_old_string(the_string)
+    return new_string
+
+# 你可以像这样调用
+my_string = return_a_whole_new_string(my_string)
+```
+
+如果你真的不想用一个返回值,你可以建一个存放你的值的类,然后把它传递给函数或者用一个已有的类,像列表:
+
+```python
+def use_a_wrapper_to_simulate_pass_by_reference(stuff_to_change):
+    new_string = something_to_do_with_the_old_string(stuff_to_change[0])
+    stuff_to_change[0] = new_string
+
+# 你可以像这样调用
+wrapper = [my_string]
+use_a_wrapper_to_simulate_pass_by_reference(wrapper)
+
+do_something_with(wrapper[0])
+```
+
+虽然看起来有一点笨重,但还是达到你的效果了.
