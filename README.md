@@ -5,3 +5,6 @@
 13 http://effbot.org/zone/default-values.htm
 
 20 http://stackoverflow.com/questions/1436703/difference-between-str-and-repr-in-python
+
+35 http://stackoverflow.com/questions/3684484/peak-detection-in-a-2d-array
+
