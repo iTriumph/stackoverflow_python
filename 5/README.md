@@ -32,3 +32,4 @@ a if test else b
 官方文档:
 * [Conditional expressions](https://docs.python.org/3/reference/expressions.html#conditional-expressions)
 * [Is there an equivalent of C’s ”?:” ternary operator?](https://docs.python.org/3.3/faq/programming.html#is-there-an-equivalent-of-c-s-ternary-operator)
+
