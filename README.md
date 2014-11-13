@@ -12,4 +12,8 @@ PS:按vote排名翻译
 
 35 http://stackoverflow.com/questions/3684484/peak-detection-in-a-2d-array
 
-64 http://stackoverflow.com/questions/1301346/the-meaning-of-a-single-and-a-double-underscore-before-an-object-name-in-python 部分6
+64 http://stackoverflow.com/questions/1301346/the-meaning-of-a-single-and-a-double-underscore-before-an-object-name-in-python 部分
+
+82 http://stackoverflow.com/questions/230751/how-to-flush-output-of-python-print
+
+83 http://stackoverflow.com/questions/6344076/differences-between-distribute-distutils-setuptools-and-distutils2

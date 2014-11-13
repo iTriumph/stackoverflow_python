@@ -81,4 +81,13 @@
 * [如何离开/退出/停用Python的virtualenv？](78/README.md)
 * [Python中**和*参数有什么用?](79/README.md)
 * [如何连接MySQL?](80/README.md)
+* [去除文件扩展名](81/README.md)
+* [82](82/README.md)
+* [83](83/README.md)
+* [新式类和旧式类](84/README.md)
+* [在Python中加入时延](85/README.md)
+* [字符串转换成小写](86/README.md)
+* [找出目录中以.txt为扩展名的文件](87/README.md)
+* [88](88/README.md)
+* [89](89/README)
 
